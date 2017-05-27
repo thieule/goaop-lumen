@@ -8,7 +8,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Go\Laravel\GoAopBridge;
+namespace Go\Lumen\GoAopBridge;
 
 use Go\Core\AspectContainer;
 use Go\Core\AspectKernel;
