@@ -1,6 +1,6 @@
 GoAopBridgeForLumen
 ==============
-This is code reference from goaop/framework and goaop/goaop-laravel-bridge
+This is code copy and reference from goaop/framework and goaop/goaop-laravel-bridge, support for Lumen
 
 The GoAopLumen adds support for Aspect-Oriented Programming via Go! AOP Framework for Lumen 5.4.* applications.
 
@@ -84,7 +84,7 @@ return [
      |
      | If configured then will be used as cache file mode for chmod
      */
-    'cacheFileMode' => null,
+    'cacheFileMode' => 511,
 
     /*
      |--------------------------------------------------------------------------
@@ -104,7 +104,7 @@ return [
      | leave it empty if you want AOP to be applied to all files in the appDir
      */
     'includePaths' => [
-        app_path()
+        __DIR__.'/../app'
     ],
 
     /*
@@ -124,13 +124,13 @@ return [
      | This option can be useful for extension and fine-tuning of services
      */
     'containerClass' => GoAspectContainer::class,
-]
+];
 ```
 
 Defining new aspects
 --------------------
 
-Aspects are services in the Laravel application and loaded into the AOP container with the help of service provider that collects all services tagged with `goaop.aspect` tag in the container. Here is an example how to implement a logging aspect that will log information about public method invocations in the app/ directory.
+Aspects are services in the Lumen application and loaded into the AOP container with the help of service provider that collects all services tagged with `goaop.aspect` tag in the container. Here is an example how to implement a logging aspect that will log information about public method invocations in the app/ directory.
 
 
 Definition of aspect class with pointuct and logging advice
@@ -198,7 +198,7 @@ class AopServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(LoggingAspect::class, function (Application $app) {
+        $this->app->singleton(LoggingAspect::class, function ($app) {
             return new LoggingAspect($app->make(LoggerInterface::class));
         });
 
