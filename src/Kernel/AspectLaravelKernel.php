@@ -16,7 +16,7 @@ use Go\Core\AspectKernel;
 /**
  * Laravel aspect kernel class
  */
-class AspectLaravelKernel extends AspectKernel
+class AspectLumenKernel extends AspectKernel
 {
     /**
      * {@inheritdoc}

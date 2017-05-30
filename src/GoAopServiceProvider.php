@@ -12,8 +12,7 @@ namespace Go\Lumen\GoAopBridge;
 
 use Go\Core\AspectContainer;
 use Go\Core\AspectKernel;
-use Go\Lumen\GoAopBridge\Kernel\AspectLaravelKernel;
-use Illuminate\Contracts\Foundation\Application;
+use Go\Lumen\GoAopBridge\Kernel\AspectLumenKernel;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -48,7 +47,7 @@ class GoAopServiceProvider extends ServiceProvider
         $this->app->configure('go_aop');
 
         $this->app->singleton(AspectKernel::class, function () {
-            $aspectKernel = AspectLaravelKernel::getInstance();
+            $aspectKernel = AspectLumenKernel::getInstance();
             $aspectKernel->init(config('go_aop'));
 
             return $aspectKernel;

@@ -172,23 +172,18 @@ class LoggingAspect implements Aspect
 }
 ```
 
-To register all application aspects in the container, create a service provider (or use an existing one)
-```bash
-./artisan make:provider AopServiceProvider
-```
 
-Inside `register()` method for this service provider, add declaration of aspect and tag it with `goaop.aspect` tag:
+Add LoggingAspect service to `register()` method in App service provider, add declaration of aspect and tag it with `goaop.aspect` tag:
 
 ```php
 
 namespace App\Providers;
 
 use App\Aspect\LoggingAspect;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Psr\Log\LoggerInterface;
 
-class AopServiceProvider extends ServiceProvider
+class AppServiceProvider extends ServiceProvider
 {
 
     /**
@@ -206,7 +201,7 @@ class AopServiceProvider extends ServiceProvider
     }
 ```
 
-Don't forget to add this service provider into your `config/app.php` service providers list!
+You can add new Provider and LoggingAspect to register function!!
 
 License
 -------
