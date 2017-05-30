@@ -54,7 +54,7 @@ class GoAopServiceProvider extends ServiceProvider
             return $aspectKernel;
         });
 
-        $this->app->singleton(AspectContainer::class, function (Application $app) {
+        $this->app->singleton(AspectContainer::class, function ($app) {
             /** @var AspectKernel $kernel */
             $kernel = $app->make(AspectKernel::class);
 
